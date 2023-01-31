@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+import { Shelf } from "./Shelf"
+
 export const ShelfList = () => {
     return(
         <div className="list-books">
@@ -249,7 +252,7 @@ export const ShelfList = () => {
           </div>
         </div>
         <div className="open-search">
-          Add a book
+         <Link to="/search">Add a book</Link> 
         </div>
       </div>
     )

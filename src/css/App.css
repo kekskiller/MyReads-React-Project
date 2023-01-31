@@ -15,7 +15,7 @@ body,
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: #3c2d7b;
   text-align: center;
 }
 .list-books-title h1 {
@@ -56,8 +56,8 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
-  background-image: url("./icons/add.svg");
+  background: #3c2d7b;
+  background-image: url("../icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
@@ -95,7 +95,7 @@ body,
   width: 50px;
   height: 53px;
   background: white;
-  background-image: url("./icons/arrow-back.svg");
+  background-image: url("../icons/arrow-back.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
@@ -150,8 +150,8 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
-  background-image: url("./icons/arrow-drop-down.svg");
+  background: #3c2d7b;
+  background-image: url("../icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
@@ -162,6 +162,11 @@ body,
   height: 100%;
   opacity: 0;
   cursor: pointer;
+  background-color: hsl(252, 46%, 75%);
+}
+
+.book-shelf-changer select option:hover {
+  background-color: hsl(252, 46%, 50%);
 }
 
 /* book cover */
