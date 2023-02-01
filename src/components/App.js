@@ -19,8 +19,6 @@ function App() {
     getAllBooks();  
   },[] )
 
-  console.log(allBooks)
-
   return (
     <div className="app">
       <div className="list-books">

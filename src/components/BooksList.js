@@ -4,7 +4,7 @@ export const BooksList = ({list}) => {
  
   return(
   <div className="books-grid">
-    {list && list.map(book => <Book id={book.id} book={book} />)}
+    {list && list.map(book => <Book key={book.id} book={book} />)}
     </div>
   )
 }

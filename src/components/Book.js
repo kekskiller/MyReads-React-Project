@@ -1,5 +1,7 @@
+import dummy from '../icons/kirby-dummy.png'
+
 export const Book = ({book}) => {
-    const url =  book.imageLinks.thumbnail;
+    const url =  'imageLinks' in book ? book.imageLinks.thumbnail : dummy
     
     return(
         <div className="book">
@@ -9,7 +11,8 @@ export const Book = ({book}) => {
                           style={{
                             height: 150,
                             width: 100,
-                            background: `url(${url})`
+                            background: `url(${url}) no-repeat`,
+                            backgroundSize: 'contain' 
                           }}
                         ></div>
                         <div className="book-shelf-changer">

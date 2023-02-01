@@ -10,7 +10,7 @@ export const Shelf = ({allBooks}) => {
     const displayShelves = Object.keys(shelfNames).map((shelf) => 
         { return(
             <div>
-                <h2 className="bookshelf-title">{shelfNames.shelf}</h2>
+                <h2 className="bookshelf-title">{shelfNames[shelf]}</h2>
                 <BooksList 
                     className="bookshelf-books" 
                     list={allBooks.filter(books =>  books.shelf === shelf)} 
