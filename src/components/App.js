@@ -1,45 +1,38 @@
 import "../css/App.css";
 
-// import { useState } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Route, Routes} from "react-router-dom";
 
 import * as BooksAPI from '../utils/BooksAPI'
 import { Search } from "./Search";
-import { ShelfList } from "./BooksList";
+import { Shelf } from "./Shelf"
 
 function App() {
-  const searchterm = 'game'
-  const navigate = useNavigate
+  const [allBooks, setAllBooks] = useState([])
 
-  const searchBook = (term) => {
-    const search = async () =>  {
-      const res = await BooksAPI.search(term);
-      return res;
-    }; 
+  useEffect(() => {  
+    const getAllBooks = async () =>  {
+      const res = await BooksAPI.getAll();
+      setAllBooks(res);
+      }; 
+    
+    getAllBooks();  
+  },[] )
 
-    search();    
-    navigate('/')
-  }
-
-  console.log(searchBook(searchterm));
-
+  console.log(allBooks)
 
   return (
     <div className="app">
-
-
-  <Routes>
-      <Route 
-        path="/"
-        element={<ShelfList />}
-      />
-      <Route
-        path="/search"
-        element={<Search /> }
-    />
-
-
-  </Routes>
+      <Routes>
+        <Route 
+          path="/"
+          element={<Shelf />}
+        />
+        <Route
+          path="/search"
+          element={<Search /> }
+        />
+      </Routes>
     </div>
   );
 }

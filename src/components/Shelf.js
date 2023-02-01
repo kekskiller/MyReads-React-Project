@@ -1,9 +1,5 @@
-import { Book } from "./Book"
+import { BooksList } from "./BooksList";
 
 export const Shelf = () => {
-    return(
-        <div>
-          
-        </div>
-    )
+    
 }

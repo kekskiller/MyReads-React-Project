@@ -1,23 +1,30 @@
 import { useState, useEffect } from "react";
 import * as BooksAPI from '../utils/BooksAPI';
+import { BooksList } from './BooksList'
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResult, setSearchResult] = useState();
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleChange = (e) => {
-    const searchvalue = e.target.value;
-
-    setSearchTerm(searchvalue);
-
-    const search = async (term) =>  {
-      const res = await BooksAPI.search(term);      
-      setSearchResult(res);
-    };
-
-    search(searchvalue); 
-    console.log(searchResult)
+    const searchvalue = e.target.value; 
+    setSearchTerm(searchvalue);  
   }
+
+  useEffect(() => {    
+    const search = async (term) =>  {
+      const res = await BooksAPI.search(term);
+      setSearchResult(res)
+      console.log(res);
+    }
+    
+    if (searchTerm ===""){
+      setSearchResult([])
+    }else{
+      search(searchTerm)
+    } 
+  
+  }, [searchTerm])
 
     return(
         <div className="search-books">
@@ -35,10 +42,11 @@ export const Search = () => {
                 onChange={handleChange}
               />
             </div>
-          </div>
-          <div className="search-books-results">
-            <ol className="books-grid"></ol>
-          </div>
+          </div> 
+            <BooksList 
+              className="books-grid"
+              list={searchResult} 
+            /> 
         </div>
     )
 }
