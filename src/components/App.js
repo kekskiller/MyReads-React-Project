@@ -10,31 +10,36 @@ import { Shelf } from "./Shelf"
 function App() {
   const [allBooks, setAllBooks] = useState([])
 
+  const getAllBooks = async () =>  {
+    const res = await BooksAPI.getAll();
+    setAllBooks(res);
+  }; 
+
   useEffect(() => {  
-    const getAllBooks = async () =>  {
-      const res = await BooksAPI.getAll();
-      setAllBooks(res);
-      }; 
-    
-    getAllBooks();  
+      getAllBooks();  
   },[] )
+
+  const handleUpdate = async (book, shelf) => {
+    await BooksAPI.update(book,shelf);
+    getAllBooks();  
+  }
 
   return (
     <div className="app">
       <div className="list-books">
-            <div className="list-books-title">
-                <h1>MyReads</h1>
-            </div>
-      <Routes>
-        <Route 
-          path="/"
-          element={<Shelf allBooks={allBooks}/>}
-        />
-        <Route
-          path="/search"
-          element={<Search /> }
-        />
-      </Routes>
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+        <Routes>
+          <Route 
+            path="/"
+            element={<Shelf allBooks={allBooks} handleUpdate={handleUpdate} />}
+          />
+          <Route
+            path="/search"
+            element={<Search handleUpdate={handleUpdate} /> }
+          />
+        </Routes>
       </div>
       <div className="open-search">
         <Link to="/search">Add a book</Link> 

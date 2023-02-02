@@ -14,7 +14,7 @@ body,
 /* main page */
 
 .list-books-title {
-  padding: 10px 0;
+  padding: 30px 0;
   background: #3c2d7b;
   text-align: center;
 }
@@ -29,18 +29,12 @@ body,
   flex: 1;
 }
 
-.bookshelf {
-  padding: 0 10px 20px;
-}
 
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
-  }
-}
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  padding: 15px 0px 0px 10px;
+  margin: 0px;
 }
 .bookshelf-books {
   text-align: center;
@@ -68,11 +62,8 @@ body,
 /* search page */
 
 .search-books-bar {
-  position: fixed;
+  position: relative;
   width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 5;
   display: flex;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
 }
@@ -110,20 +101,17 @@ body,
 
 .books-grid {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  margin: 0px;
 
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
 }
-.books-grid li {
-  padding: 10px 15px;
-  text-align: left;
-}
+
 
 .book {
   width: 140px;
+  margin: 0px 20px;
 }
 .book-title,
 .book-authors {
@@ -163,10 +151,6 @@ body,
   opacity: 0;
   cursor: pointer;
   background-color: hsl(252, 46%, 75%);
-}
-
-.book-shelf-changer select option:hover {
-  background-color: hsl(252, 46%, 50%);
 }
 
 /* book cover */

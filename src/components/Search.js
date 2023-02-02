@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as BooksAPI from '../utils/BooksAPI';
 import { BooksList } from './BooksList'
 
-export const Search = () => {
+export const Search = ({handleUpdate}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
@@ -12,41 +13,40 @@ export const Search = () => {
   }
 
   useEffect(() => {    
-    const search = async (term) =>  {
+    const search = async (term) => {
       const res = await BooksAPI.search(term);
       setSearchResult(res)
       console.log(res);
     }
     
-    if (searchTerm ===""){
+    if (searchTerm ==="") {
       setSearchResult([])
-    }else{
+    } else {
       search(searchTerm)
     } 
   
   }, [searchTerm])
 
-    return(
-        <div className="search-books">
-          <div className="search-books-bar">
-            <a href="./"
-              className="close-search"             
-            >
-              Close
-            </a>
-            <div className="search-books-input-wrapper">
-              <input
-                type="text"
-                placeholder="Search by title, author, or ISBN"
-                value={searchTerm}
-                onChange={handleChange}
-              />
-            </div>
-          </div> 
-            <BooksList 
-              className="books-grid"
-              list={searchResult} 
-            /> 
+  return(
+    <div className="search-books">
+      <div className="search-books-bar">
+        <Link to='/' className="close-search">
+          Close
+        </Link>
+        <div className="search-books-input-wrapper">
+          <input
+            type="text"
+            placeholder="Search by title, author, or ISBN"
+            value={searchTerm}
+            onChange={handleChange}
+          />
         </div>
-    )
+      </div> 
+      <BooksList 
+        className="books-grid"
+        list={searchResult} 
+        handleUpdate={handleUpdate}
+      /> 
+    </div>
+  )
 }
