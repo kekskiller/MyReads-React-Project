@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import * as BooksAPI from '../utils/BooksAPI';
 import { BooksList } from './BooksList'
 
-export const Search = ({handleUpdate}) => {
+export const Search = ({booksOnShelves, handleUpdate}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
@@ -16,15 +16,8 @@ export const Search = ({handleUpdate}) => {
     const search = async (term) => {
       const res = await BooksAPI.search(term);
       setSearchResult(res)
-      console.log(res);
     }
-    
-    if (searchTerm ==="") {
-      setSearchResult([])
-    } else {
-      search(searchTerm)
-    } 
-  
+    searchTerm ==="" ? setSearchResult([]) : search(searchTerm)  
   }, [searchTerm])
 
   return(
@@ -44,6 +37,7 @@ export const Search = ({handleUpdate}) => {
       </div> 
       <BooksList 
         className="books-grid"
+        booksOnShelves={booksOnShelves}
         list={searchResult} 
         handleUpdate={handleUpdate}
       /> 

@@ -8,11 +8,11 @@ import { Search } from "./Search";
 import { Shelf } from "./Shelf"
 
 function App() {
-  const [allBooks, setAllBooks] = useState([])
+  const [booksOnShelves, setBooksOnShelves] = useState([])
 
   const getAllBooks = async () =>  {
     const res = await BooksAPI.getAll();
-    setAllBooks(res);
+    setBooksOnShelves(res);
   }; 
 
   useEffect(() => {  
@@ -33,11 +33,11 @@ function App() {
         <Routes>
           <Route 
             path="/"
-            element={<Shelf allBooks={allBooks} handleUpdate={handleUpdate} />}
+            element={<Shelf booksOnShelves={booksOnShelves} handleUpdate={handleUpdate} />}
           />
           <Route
             path="/search"
-            element={<Search handleUpdate={handleUpdate} /> }
+            element={<Search booksOnShelves={booksOnShelves} handleUpdate={handleUpdate} /> }
           />
         </Routes>
       </div>

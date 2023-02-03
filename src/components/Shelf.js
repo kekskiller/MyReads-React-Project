@@ -1,6 +1,6 @@
 import { BooksList } from "./BooksList";
 
-export const Shelf = ({allBooks, handleUpdate}) => {
+export const Shelf = ({booksOnShelves, handleUpdate}) => {
   const shelfNames= {
       currentlyReading: "Currently Reading", 
       wantToRead: "Want To Read", 
@@ -13,8 +13,9 @@ export const Shelf = ({allBooks, handleUpdate}) => {
         <h2 className="bookshelf-title">{shelfNames[shelf]}</h2>
           <BooksList                     
             className="bookshelf-books" 
-              handleUpdate={handleUpdate}                    
-              list={allBooks.filter(books =>  books.shelf === shelf)}                     
+            booksOnShelves={booksOnShelves}
+            handleUpdate={handleUpdate}                    
+            list={booksOnShelves.filter(books =>  books.shelf === shelf)}                     
           />   
       </div>
     )

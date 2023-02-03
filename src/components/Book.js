@@ -1,6 +1,6 @@
-import dummy from '../icons/kirby-dummy.png';
+import dummy from '../icons/coverkitty.png';
 
-export const Book = ({book, handleUpdate}) => {
+export const Book = ({book, shelf, handleUpdate}) => {
   const url =  'imageLinks' in book ? book.imageLinks.thumbnail : dummy;
 
   const handleChange = (e) => {
@@ -14,19 +14,21 @@ export const Book = ({book, handleUpdate}) => {
         <div
           className="book-cover"
           style={{
-            height: 150,
-            width: 100,
             background: `url(${url}) no-repeat`,
-            backgroundSize: 'contain' 
+            backgroundColor: '#333',
+            backgroundSize: 'contain', 
+            backgroundPosition: 'center' 
           }}
         ></div>
+
         <div className="book-shelf-changer">
           <select onChange={handleChange} defaultValue=''>
             <option value="" disabled>Move to...</option>     
-            <option value="currentlyReading">Currently Reading</option>                      
-            <option value="wantToRead">Want to Read</option>                            
-            <option value="read">Read</option>
-            <option value="none">Delete</option>
+            <option value="currentlyReading">Currently Reading {shelf === 'currentlyReading' && '✓'} </option>
+            <option value="wantToRead">Want to Read {shelf === 'wantToRead' && '✓'} </option>
+            <option value="read">Read {shelf === 'read' && '✓'}</option>
+            <option value="none">None {shelf === 'none' && '✓'}
+            </option>
           </select>
         </div>
       </div>
