@@ -22,7 +22,7 @@ export const Book = ({book, shelf, handleUpdate}) => {
         ></div>
 
         <div className="book-shelf-changer">
-          <select onChange={handleChange} defaultValue=''>
+          <select onChange={handleChange} defaultValue={shelf}>
             <option value="" disabled>Move to...</option>     
             <option value="currentlyReading">Currently Reading {shelf === 'currentlyReading' && '✓'} </option>
             <option value="wantToRead">Want to Read {shelf === 'wantToRead' && '✓'} </option>
